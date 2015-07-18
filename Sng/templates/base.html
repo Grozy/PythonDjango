@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}默认标题{% endblock %} - Sng</title>
+</head>
+<body>
+
+{% include 'nav.html' %}
+{% block content %}
+<div>这里是默认内容，所有继承这个模板，如果不覆盖就显示这里的默认内容</div>
+{% endblock %}
+{% include 'bottom.html' %}
+{% include 'tongji.html' %}
+</body>
+</html>
