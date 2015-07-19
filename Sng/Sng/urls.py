@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^add/$', 'SngBlog.views.add', name='add'),
     url(r'^userInfo/', 'SngBlog.views.userInfo', name='userInfo'),
     url(r'^add/(\d+)/(\d+)/$', 'SngBlog.views.add2', name='add2'),
+    url(r'^addAuthor/$', 'SngBlog.views.addUser', name='addUser'),
 )

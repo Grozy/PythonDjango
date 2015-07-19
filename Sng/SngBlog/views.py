@@ -1,6 +1,8 @@
 #coding:utf-8
 from django.shortcuts import render
 from django.http import HttpResponse
+from SngBlog.models import Author
+
 import json
 # Create your views here.
 def index(request):
@@ -23,3 +25,26 @@ def add2(request,a,b):
 #home page
 def home(request):
 	return render(request, 'index.html')
+
+def addUser(request):
+	new_name = request.GET["name"]
+	new_website = request.GET["website"]
+	new_email = request.GET["email"]
+	new_author = Author(name=new_name,website=new_website,email=new_email)	
+	print "------------------"
+	print type(new_author)	
+	print new_author
+	print "------------------"
+	dict  = {}
+	if new_author != None:
+		dict["code"] = 1
+		dict["status"] = "success"
+		dict["data"] = {"name":new_name,"website":new_website,"author":new_email}
+		new_author.save()
+	else:
+		dict["code"] = 1001
+		dict["status"] = "failed"
+		dict["data"] = {}
+	return HttpResponse(json.dumps(dict),content_type="application/json")
+
+	
